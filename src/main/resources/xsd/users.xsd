@@ -1,0 +1,128 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.webservices.com/requests/users"
+           targetNamespace="http://www.webservices.com/requests/users"
+           elementFormDefault="qualified">
+
+    <xs:element name="createUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="telephone" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+                <xs:element name="type" type="xs:int"/>
+                <xs:element name="macAddress" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="telephone" type="xs:string"/>
+                <xs:element name="balance" type="xs:int"/>
+                <xs:element name="type" type="xs:int"/>
+                <xs:element name="token" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="loginRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="telephone" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+                <xs:element name="wifiCodig" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="loginResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="telephone" type="xs:string"/>
+                <xs:element name="balance" type="xs:int"/>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="token" type="xs:string"/>
+                <xs:element name="type" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getBalanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBalanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="balance" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sendPointRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userFromId" type="xs:long"/>
+                <xs:element name="wifiCodigUserReceiver" type="xs:string"/>
+                <xs:element name="balance" type="xs:int"/>
+                <xs:element name="userName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getAllUsersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Não há parâmetros adicionais necessários -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllUsersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="users" type="tns:userXSD" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="userXSD">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="telephone" type="xs:string"/>
+            <xs:element name="balance" type="xs:int"/>
+            <xs:element name="type" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:element name="verifyUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wifiCodig" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="verifyUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exist" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
