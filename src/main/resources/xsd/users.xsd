@@ -1,17 +1,31 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://www.webservices.com/requests/users"
-           targetNamespace="http://www.webservices.com/requests/users"
+           xmlns:tns="http://interfaces.bikeshared.uan.com"
+           targetNamespace="http://interfaces.bikeshared.uan.com"
            elementFormDefault="qualified">
+
+    <xs:complexType name="userInfo">
+        <xs:sequence>
+            <xs:element name="userId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="telephone" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="type" type="xs:int"/>
+            <xs:element name="macAddress" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="mensagem" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:element name="createUserRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="xs:string"/>
-                <xs:element name="email" type="xs:string"/>
-                <xs:element name="telephone" type="xs:string"/>
-                <xs:element name="password" type="xs:string"/>
-                <xs:element name="type" type="xs:int"/>
-                <xs:element name="macAddress" type="xs:string"/>
+                <xs:element name="userInfo" type="tns:userInfo"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -19,12 +33,8 @@
     <xs:element name="createUserResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="xs:string"/>
-                <xs:element name="email" type="xs:string"/>
-                <xs:element name="telephone" type="xs:string"/>
-                <xs:element name="balance" type="xs:int"/>
-                <xs:element name="type" type="xs:int"/>
-                <xs:element name="token" type="xs:string"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="userInfo" type="tns:userInfo"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

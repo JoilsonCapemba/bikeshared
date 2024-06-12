@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("UsersPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://www.webservices.com/requests/users");
+        wsdl11Definition.setTargetNamespace("interfaces.bikeshared.uan.com");
         wsdl11Definition.setSchema(usersSchema);
         return wsdl11Definition;
     }
