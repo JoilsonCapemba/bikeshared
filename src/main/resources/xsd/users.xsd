@@ -62,7 +62,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="getBalanceRequest">
+    <xs:element name="getSaldoRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="userId" type="xs:long"/>
@@ -70,10 +70,10 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getBalanceResponse">
+    <xs:element name="getSaldoResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="balance" type="xs:int"/>
+                <xs:element name="saldo" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -83,7 +83,7 @@
             <xs:sequence>
                 <xs:element name="userFromId" type="xs:long"/>
                 <xs:element name="wifiCodigUserReceiver" type="xs:string"/>
-                <xs:element name="balance" type="xs:int"/>
+                <xs:element name="saldo" type="xs:int"/>
                 <xs:element name="userName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>

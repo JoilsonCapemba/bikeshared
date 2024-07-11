@@ -8,8 +8,6 @@
 
 package com.uan.bikeshared.interfaces;
 
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -26,7 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="users" type="{http://interfaces.bikeshared.uan.com}userXSD" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="saldo" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,40 +35,27 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "users"
+    "saldo"
 })
-@XmlRootElement(name = "getAllUsersResponse")
-public class GetAllUsersResponse {
+@XmlRootElement(name = "getSaldoResponse")
+public class GetSaldoResponse {
 
-    protected List<UserXSD> users;
+    protected int saldo;
 
     /**
-     * Gets the value of the users property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the users property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getUsers().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UserXSD }
-     * 
+     * Gets the value of the saldo property.
      * 
      */
-    public List<UserXSD> getUsers() {
-        if (users == null) {
-            users = new ArrayList<UserXSD>();
-        }
-        return this.users;
+    public int getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * Sets the value of the saldo property.
+     * 
+     */
+    public void setSaldo(int value) {
+        this.saldo = value;
     }
 
 }
