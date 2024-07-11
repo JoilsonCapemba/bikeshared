@@ -55,7 +55,7 @@
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="email" type="xs:string"/>
                 <xs:element name="telephone" type="xs:string"/>
-                <xs:element name="balance" type="xs:int"/>
+                <xs:element name="saldo" type="xs:int"/>
                 <xs:element name="id" type="xs:long"/>
                 <xs:element name="token" type="xs:string"/>
                 <xs:element name="type" type="xs:int"/>
@@ -112,8 +112,9 @@
             <xs:element name="name" type="xs:string"/>
             <xs:element name="email" type="xs:string"/>
             <xs:element name="telephone" type="xs:string"/>
-            <xs:element name="balance" type="xs:int"/>
+            <xs:element name="saldo" type="xs:int"/>
             <xs:element name="type" type="xs:int"/>
+            <xs:element name="macAddress" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

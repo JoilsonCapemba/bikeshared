@@ -4,13 +4,18 @@ import com.uan.bikeshared.models.UserModel;
 import com.uan.bikeshared.serviceImpl.UserService;
 import com.uan.bikeshared.interfaces.CreateUserRequest;
 import com.uan.bikeshared.interfaces.CreateUserResponse;
+import com.uan.bikeshared.interfaces.GetAllUsersRequest;
+import com.uan.bikeshared.interfaces.GetAllUsersResponse;
 import com.uan.bikeshared.interfaces.ServiceStatus;
+import com.uan.bikeshared.interfaces.UserXSD;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import java.util.List;
 
 @Endpoint
 public class UserEndpoint {
@@ -32,6 +37,24 @@ public class UserEndpoint {
         serviceStatus.setStatus("SUCCESS");
         serviceStatus.setMensagem("Adicionado com sucesso!");
         response.setServiceStatus(serviceStatus);
+        response.setUserInfo(request.getUserInfo());
         return response;
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllUsersRequest")
+    @ResponsePayload
+    public GetAllUsersResponse getAllUsers(@RequestPayload GetAllUsersRequest request) {
+        GetAllUsersResponse response = new GetAllUsersResponse();
+        List<UserModel> users = userService.getAllUsers();
+        List<UserXSD> userXSDList = response.getUsers();
+
+        for (UserModel user : users) {
+            UserXSD userXSD = new UserXSD();
+            BeanUtils.copyProperties(user, userXSD);
+            userXSDList.add(userXSD);
+        }
+
+        return response;
+    }
+
 }
