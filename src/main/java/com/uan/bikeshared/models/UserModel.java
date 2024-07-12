@@ -28,4 +28,6 @@ public class UserModel implements Serializable {
     private int saldo;
 
     private int type;
+
+    private String macAddress;
 }
