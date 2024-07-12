@@ -13,4 +13,10 @@ public interface IUserService {
     void updateUser(UserModel user);
 
     void deleteUser(long userId);
+
+    UserModel loginUser(String telephone, String password, String wifiCodig);
+
+    boolean sendPoints(long userFromId, String wifiCodigUserReceiver, int saldo, String userName);
+    
+    boolean verifyUser(String wifiCodig);
 }
