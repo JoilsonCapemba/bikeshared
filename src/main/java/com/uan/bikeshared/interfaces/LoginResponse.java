@@ -209,4 +209,9 @@ public class LoginResponse {
         this.type = value;
     }
 
+    public void setServiceStatus(ServiceStatus serviceStatus) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setServiceStatus'");
+    }
+
 }
