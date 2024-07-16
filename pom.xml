@@ -94,6 +94,11 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.juddi</groupId>
+			<artifactId>juddi-client</artifactId>
+			<version>3.3.10</version>
+		</dependency>
 	</dependencies>
 
 	<build>
