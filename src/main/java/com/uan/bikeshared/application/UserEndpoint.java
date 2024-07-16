@@ -107,7 +107,7 @@ public class UserEndpoint {
             ServiceStatus serviceStatus = new ServiceStatus();
             serviceStatus.setStatus("FAILURE");
             serviceStatus.setMensagem(e.getMessage());
-            response.setServiceStatus(serviceStatus);
+            // response.setServiceStatus(serviceStatus);
         }
 
         return response;
