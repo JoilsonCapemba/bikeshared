@@ -90,7 +90,7 @@ public class UserEndpoint {
     public LoginResponse login(@RequestPayload LoginRequest request) {
         LoginResponse response = new LoginResponse();
         try {
-            UserModel user = userService.loginUser(request.getTelephone(), request.getPassword(), request.getWifiCodig());
+            UserModel user = userService.loginUser(request.getTelephone(), request.getPassword());
             
             if (user != null) {
                 response.setName(user.getName());

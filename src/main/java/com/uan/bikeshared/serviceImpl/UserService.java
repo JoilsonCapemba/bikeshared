@@ -53,9 +53,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserModel loginUser(String telephone, String password, String wifiCodig) {
+    public UserModel loginUser(String telephone, String password) {
         UserModel user = userRepository.findByTelephone(telephone);
-        if (user != null && BCrypt.checkpw(password, user.getPassword()) && user.getMacAddress().equals(wifiCodig)) {
+        if (user != null && BCrypt.checkpw(password, user.getPassword()) && user.getTelephone().equals(telephone)) {
             return user;
         }
         return null;
@@ -114,8 +114,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean verifyUser(String wifiCodig) {
-        UserModel user = userRepository.findByMacAddress(wifiCodig);
+    public boolean verifyUser(String telephone) {
+        UserModel user = userRepository.findByTelephone(telephone);
         return user != null;
     }
 

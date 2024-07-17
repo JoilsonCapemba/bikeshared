@@ -44,7 +44,7 @@
             <xs:sequence>
                 <xs:element name="telephone" type="xs:string"/>
                 <xs:element name="password" type="xs:string"/>
-                <xs:element name="wifiCodig" type="xs:string"/>
+                <!-- <xs:element name="wifiCodig" type="xs:string"/> -->
             </xs:sequence>
         </xs:complexType>
     </xs:element>
