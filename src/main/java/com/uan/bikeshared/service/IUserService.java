@@ -1,7 +1,8 @@
 package com.uan.bikeshared.service;
 
-import com.uan.bikeshared.models.UserModel;
 import java.util.List;
+
+import com.uan.bikeshared.model.UserModel;
 
 public interface IUserService {
     void AddUser(UserModel user);

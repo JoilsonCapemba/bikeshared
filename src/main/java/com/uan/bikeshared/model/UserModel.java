@@ -1,4 +1,4 @@
-package com.uan.bikeshared.models;
+package com.uan.bikeshared.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

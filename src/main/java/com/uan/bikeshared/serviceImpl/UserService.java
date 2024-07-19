@@ -1,6 +1,6 @@
-package com.uan.bikeshared.serviceImpl;
+package com.uan.bikeshared.serviceimpl;
 
-import com.uan.bikeshared.models.UserModel;
+import com.uan.bikeshared.model.UserModel;
 import com.uan.bikeshared.repository.UserRepository;
 import com.uan.bikeshared.service.IUserService;
 import io.jsonwebtoken.Jwts;

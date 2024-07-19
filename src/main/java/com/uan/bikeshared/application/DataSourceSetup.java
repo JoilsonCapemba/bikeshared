@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.uan.bikeshared.repository"})
 @ComponentScan(value = "com.uan.bikeshared.*")
-@EntityScan(basePackages = {"com.uan.bikeshared.models"})
+@EntityScan(basePackages = {"com.uan.bikeshared.model"})
 public class DataSourceSetup {
     @Value("${spring.datasource.url}")
     String databaseUrl;

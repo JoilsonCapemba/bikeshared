@@ -1,9 +1,10 @@
 package com.uan.bikeshared.repository;
 
 
-import com.uan.bikeshared.models.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.uan.bikeshared.model.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long> {

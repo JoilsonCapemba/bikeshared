@@ -1,7 +1,6 @@
 package com.uan.bikeshared.application;
 
-import com.uan.bikeshared.models.UserModel;
-import com.uan.bikeshared.serviceImpl.UserService;
+import com.uan.bikeshared.serviceimpl.UserService;
 import com.uan.bikeshared.interfaces.CreateUserRequest;
 import com.uan.bikeshared.interfaces.CreateUserResponse;
 import com.uan.bikeshared.interfaces.GetAllUsersRequest;
@@ -15,6 +14,7 @@ import com.uan.bikeshared.interfaces.ServiceStatus;
 import com.uan.bikeshared.interfaces.UserXSD;
 import com.uan.bikeshared.interfaces.VerifyUserRequest;
 import com.uan.bikeshared.interfaces.VerifyUserResponse;
+import com.uan.bikeshared.model.UserModel;
 import com.uan.bikeshared.exceptions.AuthenticationException;
 
 import org.springframework.beans.BeanUtils;
