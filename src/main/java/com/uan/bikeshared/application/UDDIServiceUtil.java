@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.xml.transform.StringSource;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import javax.xml.xpath.XPath;
@@ -30,6 +32,7 @@ public class UDDIServiceUtil {
     private static final Logger LOGGER = Logger.getLogger(UDDIServiceUtil.class.getName());
 
     private String selectedStationUrl;
+    private String selectedStationNamespace;
 
     public List<ServiceDetails> listServices() {
         String requestPayload = "<getAllServicesRequest xmlns=\"http://interfaces.uddi.uan.com\"/>";
@@ -66,7 +69,6 @@ public class UDDIServiceUtil {
         XPathFactory xPathFactory = XPathFactory.newInstance();
         XPath xpath = xPathFactory.newXPath();
 
-        // Define the namespace context
         XPathExpression expr = xpath.compile("//*[local-name()='getAllServicesResponse']/*[local-name()='services']");
 
         NodeList serviceNodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
@@ -106,8 +108,15 @@ public class UDDIServiceUtil {
 
         // Set the selected station URL for future communications
         this.selectedStationUrl = selectedService.getServiceUrl();
+        // Derive the namespace from the service URL or name
+        this.selectedStationNamespace = deriveNamespace(selectedService.getServiceName());
         System.out.println("Selected station URL: " + this.selectedStationUrl);
+        System.out.println("Selected station namespace: " + this.selectedStationNamespace);
         return true;
+    }
+
+    private String deriveNamespace(String serviceName) {
+        return "http://interfaces." + serviceName.toLowerCase() + ".uan.com";
     }
 
     private String communicateWithStation(String requestPayload) {
@@ -134,14 +143,14 @@ public class UDDIServiceUtil {
     }
 
     public String getStationInfo(Long stationId) {
-        String requestPayload = "<GetStationRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<GetStationRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "</GetStationRequest>";
         return communicateWithStation(requestPayload);
     }
 
     public String lockBike(Long stationId, Long dockId) {
-        String requestPayload = "<LockBikeRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<LockBikeRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "</LockBikeRequest>";
@@ -149,7 +158,7 @@ public class UDDIServiceUtil {
     }
 
     public String unlockBike(Long stationId, Long dockId) {
-        String requestPayload = "<UnlockBikeRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<UnlockBikeRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "</UnlockBikeRequest>";
@@ -157,7 +166,7 @@ public class UDDIServiceUtil {
     }
 
     public String addDock(Long stationId, Long dockId, String state) {
-        String requestPayload = "<AddDockRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<AddDockRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dock>" +
                 "<dockId>" + dockId + "</dockId>" +
@@ -168,7 +177,7 @@ public class UDDIServiceUtil {
     }
 
     public String deleteDock(Long stationId, Long dockId) {
-        String requestPayload = "<DeleteDockRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<DeleteDockRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "</DeleteDockRequest>";
@@ -176,7 +185,7 @@ public class UDDIServiceUtil {
     }
 
     public String alterStateDockInUpBike(Long stationId, Long dockId, String state) {
-        String requestPayload = "<AlterStateDockInUpBikeRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<AlterStateDockInUpBikeRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "<state>" + state + "</state>" +
@@ -185,7 +194,7 @@ public class UDDIServiceUtil {
     }
 
     public String alterStateDockInDownBike(Long stationId, Long dockId, String state, String info) {
-        String requestPayload = "<AlterStateDockInDownBikeRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<AlterStateDockInDownBikeRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "<state>" + state + "</state>" +
@@ -195,7 +204,7 @@ public class UDDIServiceUtil {
     }
 
     public String levantarBicicleta(Long stationId, Long dockId) {
-        String requestPayload = "<LevantarBicicletaRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<LevantarBicicletaRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "</LevantarBicicletaRequest>";
@@ -203,7 +212,7 @@ public class UDDIServiceUtil {
     }
 
     public String entregarBicicleta(Long stationId, Long dockId) {
-        String requestPayload = "<EntregarBicicletaRequest xmlns=\"http://interfaces.d00_station01.uan.com\">" +
+        String requestPayload = "<EntregarBicicletaRequest xmlns=\"" + this.selectedStationNamespace + "\">" +
                 "<stationId>" + stationId + "</stationId>" +
                 "<dockId>" + dockId + "</dockId>" +
                 "</EntregarBicicletaRequest>";
