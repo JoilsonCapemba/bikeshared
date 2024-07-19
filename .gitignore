@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore todos os arquivos na pasta interfaces
+src/main/java/com/uan/d00_station01/interfaces/*
+
+.DS_Store
