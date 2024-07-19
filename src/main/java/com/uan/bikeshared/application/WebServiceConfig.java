@@ -33,8 +33,23 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
+    @Bean(name = "services")
+    public DefaultWsdl11Definition servicesWsdl11Definition(XsdSchema servicesSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("ServicesPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("interfaces.bikeshared.uan.com");
+        wsdl11Definition.setSchema(servicesSchema);
+        return wsdl11Definition;
+    }
+
     @Bean
     public XsdSchema usersSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/users.xsd"));
+    }
+
+    @Bean
+    public XsdSchema servicesSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/services.xsd"));
     }
 }

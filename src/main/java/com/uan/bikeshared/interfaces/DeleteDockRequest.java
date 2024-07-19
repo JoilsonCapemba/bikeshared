@@ -10,7 +10,6 @@ package com.uan.bikeshared.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="userInfo" type="{http://interfaces.bikeshared.uan.com}userInfo"/&gt;
+ *         &lt;element name="stationId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="dockId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,45 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "userInfo"
+    "stationId",
+    "dockId"
 })
-@XmlRootElement(name = "createUserRequest")
-public class CreateUserRequest {
+@XmlRootElement(name = "deleteDockRequest")
+public class DeleteDockRequest {
 
-    @XmlElement(required = true)
-    protected UserInfo userInfo;
+    protected long stationId;
+    protected long dockId;
 
     /**
-     * Gets the value of the userInfo property.
+     * Gets the value of the stationId property.
      * 
-     * @return
-     *     possible object is
-     *     {@link UserInfo }
-     *     
      */
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public long getStationId() {
+        return stationId;
     }
 
     /**
-     * Sets the value of the userInfo property.
+     * Sets the value of the stationId property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link UserInfo }
-     *     
      */
-    public void setUserInfo(UserInfo value) {
-        this.userInfo = value;
+    public void setStationId(long value) {
+        this.stationId = value;
+    }
+
+    /**
+     * Gets the value of the dockId property.
+     * 
+     */
+    public long getDockId() {
+        return dockId;
+    }
+
+    /**
+     * Sets the value of the dockId property.
+     * 
+     */
+    public void setDockId(long value) {
+        this.dockId = value;
     }
 
 }

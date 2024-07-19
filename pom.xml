@@ -131,6 +131,7 @@
 				<configuration>
 					<sources>
 						<source>${project.basedir}/src/main/resources/xsd/users.xsd</source>
+						<source>${project.basedir}/src/main/resources/xsd/services.xsd</source>
 					</sources>
 					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
 					<clearOutputDir>false</clearOutputDir>

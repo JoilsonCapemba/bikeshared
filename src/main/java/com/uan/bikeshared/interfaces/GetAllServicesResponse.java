@@ -8,6 +8,8 @@
 
 package com.uan.bikeshared.interfaces;
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="userInfo" type="{http://interfaces.bikeshared.uan.com}userInfo"/&gt;
+ *         &lt;element name="services" type="{http://interfaces.bikeshared.uan.com}ServiceDetails" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +38,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "userInfo"
+    "services"
 })
-@XmlRootElement(name = "createUserRequest")
-public class CreateUserRequest {
+@XmlRootElement(name = "getAllServicesResponse")
+public class GetAllServicesResponse {
 
     @XmlElement(required = true)
-    protected UserInfo userInfo;
+    protected List<ServiceDetails> services;
 
     /**
-     * Gets the value of the userInfo property.
+     * Gets the value of the services property.
      * 
-     * @return
-     *     possible object is
-     *     {@link UserInfo }
-     *     
-     */
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    /**
-     * Sets the value of the userInfo property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the services property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link UserInfo }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getServices().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ServiceDetails }
+     * 
+     * 
      */
-    public void setUserInfo(UserInfo value) {
-        this.userInfo = value;
+    public List<ServiceDetails> getServices() {
+        if (services == null) {
+            services = new ArrayList<ServiceDetails>();
+        }
+        return this.services;
     }
 
 }

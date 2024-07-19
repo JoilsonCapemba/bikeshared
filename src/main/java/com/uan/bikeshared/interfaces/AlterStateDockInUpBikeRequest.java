@@ -25,8 +25,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="serviceStatus" type="{http://interfaces.bikeshared.uan.com}serviceStatus"/&gt;
- *         &lt;element name="userInfo" type="{http://interfaces.bikeshared.uan.com}userInfo"/&gt;
+ *         &lt;element name="stationId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="dockId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="state" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,63 +38,72 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "serviceStatus",
-    "userInfo"
+    "stationId",
+    "dockId",
+    "state"
 })
-@XmlRootElement(name = "createUserResponse")
-public class CreateUserResponse {
+@XmlRootElement(name = "alterStateDockInUpBikeRequest")
+public class AlterStateDockInUpBikeRequest {
 
+    protected long stationId;
+    protected long dockId;
     @XmlElement(required = true)
-    protected ServiceStatus serviceStatus;
-    @XmlElement(required = true)
-    protected UserInfo userInfo;
+    protected String state;
 
     /**
-     * Gets the value of the serviceStatus property.
+     * Gets the value of the stationId property.
+     * 
+     */
+    public long getStationId() {
+        return stationId;
+    }
+
+    /**
+     * Sets the value of the stationId property.
+     * 
+     */
+    public void setStationId(long value) {
+        this.stationId = value;
+    }
+
+    /**
+     * Gets the value of the dockId property.
+     * 
+     */
+    public long getDockId() {
+        return dockId;
+    }
+
+    /**
+     * Sets the value of the dockId property.
+     * 
+     */
+    public void setDockId(long value) {
+        this.dockId = value;
+    }
+
+    /**
+     * Gets the value of the state property.
      * 
      * @return
      *     possible object is
-     *     {@link ServiceStatus }
+     *     {@link String }
      *     
      */
-    public ServiceStatus getServiceStatus() {
-        return serviceStatus;
+    public String getState() {
+        return state;
     }
 
     /**
-     * Sets the value of the serviceStatus property.
+     * Sets the value of the state property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ServiceStatus }
+     *     {@link String }
      *     
      */
-    public void setServiceStatus(ServiceStatus value) {
-        this.serviceStatus = value;
-    }
-
-    /**
-     * Gets the value of the userInfo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserInfo }
-     *     
-     */
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    /**
-     * Sets the value of the userInfo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserInfo }
-     *     
-     */
-    public void setUserInfo(UserInfo value) {
-        this.userInfo = value;
+    public void setState(String value) {
+        this.state = value;
     }
 
 }

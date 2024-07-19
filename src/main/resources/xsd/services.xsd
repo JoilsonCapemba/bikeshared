@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://interfaces.bikeshared.uan.com"
+           targetNamespace="http://interfaces.bikeshared.uan.com"
+           elementFormDefault="qualified">
+
+    <xs:element name="getAllServicesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- No additional parameters required -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllServicesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="services" type="tns:ServiceDetails" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="selectStationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="selectStationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStationInfoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStationInfoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="lockBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="lockBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="unlockBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="unlockBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addDockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dock">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="dockId" type="xs:long"/>
+                            <xs:element name="state" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addDockResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteDockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteDockResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="alterStateDockInUpBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+                <xs:element name="state" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="alterStateDockInUpBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="alterStateDockInDownBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+                <xs:element name="state" type="xs:string"/>
+                <xs:element name="info" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="alterStateDockInDownBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="levantarBicicletaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="levantarBicicletaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="entregarBicicletaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="entregarBicicletaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ServiceDetails">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="serviceName" type="xs:string"/>
+            <xs:element name="serviceUrl" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
