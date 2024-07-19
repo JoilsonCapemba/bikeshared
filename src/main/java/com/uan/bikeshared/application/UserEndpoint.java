@@ -44,6 +44,7 @@ public class UserEndpoint {
         
         // Hash the password before saving
         userModel.setPassword(userService.hashPassword(userModel.getPassword()));
+        userModel.setSaldo(10);
         
         userService.AddUser(userModel);
         serviceStatus.setStatus("SUCCESS");
