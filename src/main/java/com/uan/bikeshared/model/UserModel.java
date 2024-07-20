@@ -28,4 +28,5 @@ public class UserModel implements Serializable {
     private int type;
 
     private String macAddress;
+
 }

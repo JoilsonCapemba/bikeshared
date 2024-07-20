@@ -79,9 +79,9 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public boolean sendPoints(long userFromId, String wifiCodigUserReceiver, int saldo, String userName) {
+    public boolean sendPoints(String telephoneFrom, String telephoneReceiver, int saldo, String userName){        
         // Encontrar o usuário que está enviando os pontos
-        UserModel senderUser = userRepository.findById(userFromId).orElse(null);
+        UserModel senderUser = userRepository.findByTelephone(telephoneFrom);
         if (senderUser == null) {
             throw new RuntimeException("Usuário remetente não encontrado");
         }
@@ -92,7 +92,7 @@ public class UserService implements IUserService {
         }
 
         // Encontrar o usuário receptor baseado no wifiCodig (macAddress)
-        UserModel receiverUser = userRepository.findByMacAddress(wifiCodigUserReceiver);
+        UserModel receiverUser = userRepository.findByTelephone(telephoneReceiver);
         if (receiverUser == null) {
             throw new RuntimeException("Usuário receptor não encontrado");
         }

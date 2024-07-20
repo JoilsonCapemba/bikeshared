@@ -11,6 +11,4 @@ public interface UserRepository extends JpaRepository<UserModel, Long> {
     UserModel findUserById(Long id);
 
     UserModel findByTelephone(String telephone);
-
-    UserModel findByMacAddress(String macAddress);
 }

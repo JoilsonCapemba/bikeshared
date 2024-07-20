@@ -17,7 +17,7 @@ public interface IUserService {
 
     UserModel loginUser(String telephone, String password);
 
-    boolean sendPoints(long userFromId, String wifiCodigUserReceiver, int saldo, String userName);
+    boolean sendPoints(String telephoneFrom, String telephoneReceiver, int saldo, String userName);
     
     boolean verifyUser(String wifiCodig);
 }

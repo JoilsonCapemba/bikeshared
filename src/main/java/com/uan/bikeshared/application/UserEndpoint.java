@@ -126,8 +126,8 @@ public class UserEndpoint {
 
         try {
             boolean success = userService.sendPoints(
-                request.getUserFromId(),
-                request.getWifiCodigUserReceiver(),
+                request.getTelephoneFrom(),
+                request.getTelephoneReceiver(),
                 request.getSaldo(),
                 request.getUserName()
             );
