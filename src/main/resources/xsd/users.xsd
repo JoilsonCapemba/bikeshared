@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://interfaces.bikeshared.uan.com"
-           targetNamespace="http://interfaces.bikeshared.uan.com"
+           xmlns:tns="http://interfaces.uan.com"
+           targetNamespace="http://interfaces.uan.com"
            elementFormDefault="qualified">
 
     <xs:complexType name="userInfo">

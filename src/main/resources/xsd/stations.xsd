@@ -1,0 +1,200 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://interfaces.uan.com"
+           targetNamespace="http://interfaces.uan.com"
+           elementFormDefault="qualified">
+           
+    <xs:element name="GetStationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetStationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="station" type="tns:StationType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="DockType">
+        <xs:sequence>
+            <xs:element name="idDock" type="xs:long"/>
+            <xs:element name="reference" type="xs:string"/>
+            <xs:element name="state" type="xs:int"/>
+            <xs:element name="info" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="StationType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="longitude" type="xs:double"/>
+            <xs:element name="capacity" type="xs:int"/>
+            <xs:element name="availableBikes" type="xs:int"/>
+            <xs:element name="availableDocks" type="xs:int"/>
+            <xs:element name="deliveryBonus" type="xs:int"/>
+            <xs:element name="dockItem" type="tns:DockType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="AddDockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dock" type="tns:DockType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddDockResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteDockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteDockResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AlterStateDockInUpBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+                <xs:element name="state" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AlterStateDockInUpBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AlterStateDockInDownBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+                <xs:element name="state" type="xs:int"/>
+                <xs:element name="info" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AlterStateDockInDownBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="LockBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="LockBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UnlockBikeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UnlockBikeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="LevantarBicicletaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="LevantarBicicletaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="EntregarBicicletaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+                <xs:element name="dockId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="EntregarBicicletaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateStationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="station" type="tns:StationType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateStationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stationId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

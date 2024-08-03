@@ -1,19 +1,7 @@
 package com.uan.bikeshared.application;
 
 import com.uan.bikeshared.serviceimpl.UserService;
-import com.uan.bikeshared.interfaces.CreateUserRequest;
-import com.uan.bikeshared.interfaces.CreateUserResponse;
-import com.uan.bikeshared.interfaces.GetAllUsersRequest;
-import com.uan.bikeshared.interfaces.GetAllUsersResponse;
-import com.uan.bikeshared.interfaces.GetSaldoRequest;
-import com.uan.bikeshared.interfaces.GetSaldoResponse;
-import com.uan.bikeshared.interfaces.LoginRequest;
-import com.uan.bikeshared.interfaces.LoginResponse;
-import com.uan.bikeshared.interfaces.SendPointRequest;
-import com.uan.bikeshared.interfaces.ServiceStatus;
-import com.uan.bikeshared.interfaces.UserXSD;
-import com.uan.bikeshared.interfaces.VerifyUserRequest;
-import com.uan.bikeshared.interfaces.VerifyUserResponse;
+import com.uan.interfaces.*;
 import com.uan.bikeshared.model.UserModel;
 import com.uan.bikeshared.exceptions.AuthenticationException;
 
@@ -27,7 +15,7 @@ import java.util.List;
 
 @Endpoint
 public class UserEndpoint {
-    private static final String NAMESPACE_URI = "http://interfaces.bikeshared.uan.com";
+    private static final String NAMESPACE_URI = "http://interfaces.uan.com";
 
     @Autowired
     private UserService userService;
