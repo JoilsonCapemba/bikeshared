@@ -84,11 +84,17 @@
                 <xs:element name="telephoneFrom" type="xs:string"/>
                 <xs:element name="telephoneReceiver" type="xs:string"/>
                 <xs:element name="saldo" type="xs:int"/>
-                <xs:element name="userName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="sendPointResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="getAllUsersRequest">
         <xs:complexType>

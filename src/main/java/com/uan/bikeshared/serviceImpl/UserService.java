@@ -79,7 +79,7 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public boolean sendPoints(String telephoneFrom, String telephoneReceiver, int saldo, String userName){        
+    public boolean sendPoints(String telephoneFrom, String telephoneReceiver, int saldo){        
         // Encontrar o usuário que está enviando os pontos
         UserModel senderUser = userRepository.findByTelephone(telephoneFrom);
         if (senderUser == null) {
@@ -95,11 +95,6 @@ public class UserService implements IUserService {
         UserModel receiverUser = userRepository.findByTelephone(telephoneReceiver);
         if (receiverUser == null) {
             throw new RuntimeException("Usuário receptor não encontrado");
-        }
-
-        // Verificar se o nome do usuário receptor corresponde
-        if (!receiverUser.getName().equals(userName)) {
-            throw new RuntimeException("Nome do usuário receptor não corresponde");
         }
 
         // Transferir os pontos

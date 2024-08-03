@@ -109,15 +109,15 @@ public class UserEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "sendPointRequest")
     @ResponsePayload
-    public ServiceStatus sendPoint(@RequestPayload SendPointRequest request) {
+    public SendPointResponse sendPoint(@RequestPayload SendPointRequest request) {
+        SendPointResponse response = new SendPointResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
 
         try {
             boolean success = userService.sendPoints(
                 request.getTelephoneFrom(),
                 request.getTelephoneReceiver(),
-                request.getSaldo(),
-                request.getUserName()
+                request.getSaldo()
             );
 
             if (success) {
@@ -131,8 +131,8 @@ public class UserEndpoint {
             serviceStatus.setStatus("FAILURE");
             serviceStatus.setMensagem(e.getMessage());
         }
-
-        return serviceStatus;
+        response.setServiceStatus(serviceStatus);
+        return response;
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "verifyUserRequest")

@@ -25,8 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="telephone" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="serviceStatus" type="{http://interfaces.uan.com}serviceStatus"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,63 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "telephone",
-    "password"
+    "serviceStatus"
 })
-@XmlRootElement(name = "loginRequest")
-public class LoginRequest {
+@XmlRootElement(name = "sendPointResponse")
+public class SendPointResponse {
 
     @XmlElement(required = true)
-    protected String telephone;
-    @XmlElement(required = true)
-    protected String password;
+    protected ServiceStatus serviceStatus;
 
     /**
-     * Gets the value of the telephone property.
+     * Gets the value of the serviceStatus property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ServiceStatus }
      *     
      */
-    public String getTelephone() {
-        return telephone;
+    public ServiceStatus getServiceStatus() {
+        return serviceStatus;
     }
 
     /**
-     * Sets the value of the telephone property.
+     * Sets the value of the serviceStatus property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ServiceStatus }
      *     
      */
-    public void setTelephone(String value) {
-        this.telephone = value;
-    }
-
-    /**
-     * Gets the value of the password property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Sets the value of the password property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPassword(String value) {
-        this.password = value;
+    public void setServiceStatus(ServiceStatus value) {
+        this.serviceStatus = value;
     }
 
 }
