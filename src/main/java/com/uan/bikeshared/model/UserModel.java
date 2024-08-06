@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "telephone"))
 public class UserModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +19,7 @@ public class UserModel implements Serializable {
 
     private String email;
 
+    @Column(unique = true)
     private String telephone;
 
     private boolean estado;
@@ -28,5 +29,4 @@ public class UserModel implements Serializable {
     private int type;
 
     private String macAddress;
-
 }
